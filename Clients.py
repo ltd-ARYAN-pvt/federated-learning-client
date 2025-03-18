@@ -15,8 +15,6 @@ class FlCustomClient(NumPyClient):
         self.valloader = valloader
         self.quant = quantization_type
 
-        # torch.save(net.state_dict(), f"model_{partition_id}.pth")
-
         # Apply pruning
         self.net = utils.apply_pruning(self.net)
 
@@ -32,8 +30,6 @@ class FlCustomClient(NumPyClient):
             example_input = torch.randn(1, 3, 32, 32).to(utils.DEVICE)
             self.net(example_input)
             torch.quantization.convert(self.net, inplace=True)    
-
-        # torch.save(net.state_dict(), f"optimized_model_{partition_id}.pth")
     
     def get_parameters(self, config):
         print(f"[Client {self.partition_id}] get_parameters")

@@ -113,5 +113,3 @@ run_simulation(
     num_supernodes=NUM_PARTITIONS,
     backend_config=backend_config,
 )
-
-torch.save(model.state_dict(), "optimized_model.pth")
